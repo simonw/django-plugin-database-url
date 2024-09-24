@@ -1,0 +1,34 @@
+[project]
+name = "django-plugin-database-url"
+version = "0.1"
+description = "Django plugin that reads the DATABASE_URL environment variable"
+readme = "README.md"
+authors = [{name = "Simon Willison"}]
+license = {text = "Apache-2.0"}
+classifiers = [
+    "License :: OSI Approved :: Apache Software License"
+]
+dependencies = [
+    "django",
+    "djp",
+    "dj-database-url",
+]
+
+[project.urls]
+Homepage = "https://github.com/simonw/django-plugin-database-url"
+Changelog = "https://github.com/simonw/django-plugin-database-url/releases"
+Issues = "https://github.com/simonw/django-plugin-database-url/issues"
+CI = "https://github.com/simonw/django-plugin-database-url/actions"
+
+[project.entry-points.djp]
+django_plugin_database_url = "django_plugin_database_url"
+
+[project.optional-dependencies]
+test = ["pytest", "pytest-django", "pytest-env"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "tests.test_project.settings"
+pythonpath = ["."]
+
+[tool.pytest_env]
+DATABASE_URL = "sqlite:///tmp/django_plugin_database_url_test.db"
